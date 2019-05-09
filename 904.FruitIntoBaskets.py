@@ -3,8 +3,10 @@ class Solution:
     def totalFruit(self, tree: List[int]) -> int:
         res = -1
         curr = 0
+        # prev: last type of fruit
+        # prev_cnt: the number of CONSECUTIVE last type of fruit
         prev, prev_cnt = None, 0
-        prev2 = None
+        prev2 = None  # the other type of fruit
         for t in tree:
             if t == prev:
                 curr += 1
