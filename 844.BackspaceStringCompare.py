@@ -29,3 +29,19 @@ class Solution:
             
         return True
 
+
+# class Solution:
+#     @staticmethod
+#     def final(S: str) -> str:
+#         stack = list()
+#         for c in S:
+#             if c != '#':
+#                 stack.append(c)
+#             else:
+#                 if len(stack) > 0:
+#                     stack.pop()
+#         return ''.join(stack)
+    
+#     def backspaceCompare(self, S: str, T: str) -> bool:
+#         return self.final(S) == self.final(T)
+
