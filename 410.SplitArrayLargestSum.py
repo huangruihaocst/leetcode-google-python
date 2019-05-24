@@ -18,7 +18,6 @@ class Solution:
                 res = False
                 break
         return res
-
     
     def splitArray(self, nums: List[int], m: int) -> int:
         left = 0
