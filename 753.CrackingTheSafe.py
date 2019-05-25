@@ -9,6 +9,9 @@ class Solution:
         def dfs(v):
             nonlocal visited, current
             
+            # important DFS trick here.
+            # use return True to skip further search,
+            # thus save time
             if len(visited) == target:
                 return True
             
@@ -17,6 +20,8 @@ class Solution:
                 if new not in visited:
                     visited.add(new)
                     current.append(d)
+                    # also here: if answer has already been found,
+                    # no need for further search
                     if dfs(new):
                         return True
                     visited.remove(new)
