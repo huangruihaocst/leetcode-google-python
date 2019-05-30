@@ -145,3 +145,142 @@ class Solution:
         
         dfs()
 
+
+# Version 2: Much cleaner
+# """
+# This is the robot's control interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class Robot:
+#    def move(self):
+#        """
+#        Returns true if the cell in front is open and robot moves into the cell.
+#        Returns false if the cell in front is blocked and robot stays in the current cell.
+#        :rtype bool
+#        """
+#
+#    def turnLeft(self):
+#        """
+#        Robot will stay in the same cell after calling turnLeft/turnRight.
+#        Each turn will be 90 degrees.
+#        :rtype void
+#        """
+#
+#    def turnRight(self):
+#        """
+#        Robot will stay in the same cell after calling turnLeft/turnRight.
+#        Each turn will be 90 degrees.
+#        :rtype void
+#        """
+#
+#    def clean(self):
+#        """
+#        Clean the current cell.
+#        :rtype void
+#        """
+
+# class Solution:
+#     def cleanRoom(self, robot):
+#         """
+#         :type robot: Robot
+#         :rtype: None
+#         """
+#         visited = set()
+#         x, y, direction = 0, 0, 0
+        
+#         def turn_to(d):
+#             nonlocal direction
+#             diff = d - direction
+#             if 0 <= diff <= 2:
+#                 for _ in range(diff):
+#                     robot.turnRight()
+#             elif diff == -3:
+#                 robot.turnRight()
+#             elif -2 <= diff < 0:
+#                 for _ in range(abs(diff)):
+#                     robot.turnLeft()
+#             else:
+#                 robot.turnLeft()
+#             direction = d
+        
+#         def dfs():
+#             nonlocal x, y, direction, visited
+#             robot.clean()
+#             visited.add((x, y))
+            
+#             for dx, dy, d in {(0, -1, 0), (1, 0, 1), (0, 1, 2), (-1, 0, 3)}:
+#                 if (x + dx, y + dy) not in visited:
+#                     turn_to(d)
+#                     if robot.move():
+#                         x, y = x + dx, y + dy
+#                         dfs()
+#                         turn_to((d + 2) % 4)
+#                         robot.move()
+#                         x, y = x - dx, y - dy
+#                     else:
+#                         visited.add((x + dx, y + dy))
+        
+#         dfs()
+
+
+# Version 3: Cleanest
+# """
+# This is the robot's control interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class Robot:
+#    def move(self):
+#        """
+#        Returns true if the cell in front is open and robot moves into the cell.
+#        Returns false if the cell in front is blocked and robot stays in the current cell.
+#        :rtype bool
+#        """
+#
+#    def turnLeft(self):
+#        """
+#        Robot will stay in the same cell after calling turnLeft/turnRight.
+#        Each turn will be 90 degrees.
+#        :rtype void
+#        """
+#
+#    def turnRight(self):
+#        """
+#        Robot will stay in the same cell after calling turnLeft/turnRight.
+#        Each turn will be 90 degrees.
+#        :rtype void
+#        """
+#
+#    def clean(self):
+#        """
+#        Clean the current cell.
+#        :rtype void
+#        """
+
+# class Solution:
+#     def cleanRoom(self, robot):
+#         """
+#         :type robot: Robot
+#         :rtype: None
+#         """
+#         visited = set()
+        
+#         def dfs(x, y, dx, dy):
+#             nonlocal visited
+#             robot.clean()
+#             visited.add((x, y))
+            
+#             for _ in range(4):
+#                 if (x + dx, y + dy) not in visited:
+#                     if robot.move():
+#                         dfs(x + dx, y + dy, dx, dy)
+#                         robot.turnLeft()
+#                         robot.turnLeft()
+#                         robot.move()
+#                         robot.turnLeft()
+#                         robot.turnLeft()
+#                     else:
+#                         visited.add((x + dx, y + dy))
+#                 dx, dy = -dy, dx
+#                 robot.turnLeft()
+        
+#         dfs(0, 0, 0, 1)
