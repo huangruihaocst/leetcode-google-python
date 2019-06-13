@@ -1,4 +1,4 @@
-# Solution 1: w/ memory/cache. Beat 98%
+# Solution 1: w/ memory/cache. Beat 98%.
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
